@@ -1,40 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; // this is an element allowing to use elements of Unity
+using UnityEngine.UIElements;
+
 public class MySceneController : MonoBehaviour
 {
-    public int healthValue; // this will store the health value between 0-100 of a player
-    public string userName = "Marcin";
-    public float yourMoney; // this store the float value for amount of collected gold in the application
+    public GameObject myObject; // this is a defition for an object of the type GameObject
+    public GameObject[] interactables; // an array of the objects
 
-    public string[] artifacts = {"Cup", "Gold Coin", "Treasure Chest"}; // this will store elements that user collects in the game
-
-    public string[] otherUsers;
 
     private void Start()
     {
-        // Debug.Log("Marcin is the best teacher");
-        healthValue = 100;
-        yourMoney = 0.0f; 
-        Debug.Log(userName + " - your health value is " + healthValue + "%");
-
-        int numberOfClicks = 0;
-        numberOfClicks = 10;
-        Debug.Log("You have clicked " + numberOfClicks + " times");
-
-        string myArtifactsToCollect = ""; // this is currently an empty string type data
-        
-        // this loop will go over each element of the array called artifacts
-        for (int i = 0; i< artifacts.Length; i++)
+        //myObject.SetActive(false); // this will make an object called myObject disapear
+        // I want to go through each element of interactables array and make it re-scaled.
+        /*foreach (GameObject whatEver in interactables)
         {
-            myArtifactsToCollect = myArtifactsToCollect + artifacts[i] + ", ";
+            whatEver.transform.localScale = 
+                new Vector3(whatEver.transform.localScale.x * 2.0f, whatEver.transform.localScale.y * 2.0f, whatEver.transform.localScale.z*2.0f);
+        }*/
+
+        
+        for (int a = 0; a< interactables.Length; a++)
+        {
+            Debug.Log("this is " + a + " element of the list");
+            // condition
+            // only if the name of the object is not Cube
+            if (interactables[a].name != "Cube")
+            {
+                interactables[a].transform.localScale = interactables[a].transform.localScale * 4.0f;
+            }
+            else
+            {
+
+            }
+            
         }
-
-        Debug.Log("You task in the game is to collect " + myArtifactsToCollect);
-
-        /*
-         * Create an array that consist "Cup", "Gold Coin", "Treasure Chest"
-         * At the start of the game. Display a message "You task in the game is to find: "  + elements of the array
-         */
+        
     }
 }
